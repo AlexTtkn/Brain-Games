@@ -13,6 +13,9 @@ repositories {
 compileJava {
     options.release = 17
 }
+run {
+    standardInput = System.in
+}
 
 application {
     mainClass = 'hexlet.code.App'
