@@ -1,8 +1,5 @@
 package hexlet.code;
-
-import java.util.NoSuchElementException;
 import java.util.Scanner;
-
 public class Cli {
     public static void greetingsClient() {
         Scanner scanner = new Scanner(System.in);
