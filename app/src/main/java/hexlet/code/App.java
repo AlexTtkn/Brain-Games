@@ -17,12 +17,7 @@ public class App {
                 System.out.println("Your choice: 2\n");
                 Games.evenChoice();
             }
-            case "0" -> {
-                System.out.println("Exit");
-            }
-            default -> {
-                System.out.println();
-            }
+            case "0" -> System.out.println("Exit");
         }
     }
 }
