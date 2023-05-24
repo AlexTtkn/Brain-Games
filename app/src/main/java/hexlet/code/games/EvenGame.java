@@ -1,12 +1,14 @@
-package hexlet.code;
+package hexlet.code.games;
+
+import hexlet.code.Engine;
 
 import java.util.Random;
 import java.util.Scanner;
 
-public class EvenGame {
+public class EvenGame implements Engine {
     public static void evenChoice() {
         Scanner scanner = new Scanner(System.in);
-        String clientName = Games.greetingsClient();
+        String clientName = Engine.greetingsClient();
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         int answersCount = 0;
         while (true) {
@@ -23,11 +25,18 @@ public class EvenGame {
                     break;
                 }
             } else {
-                String rightAnswer = clientAnswer.equals("yes") ? "no" : "yes";
-                System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'. \n", clientAnswer, rightAnswer);
-                System.out.printf("Let's try again, %s\n", clientName);
+                EvenGame evenGame = new EvenGame();
+                evenGame.wrongAnswer(clientAnswer, clientAnswer, clientName);
                 break;
             }
         }
+    }
+
+    @Override
+    public void wrongAnswer(String wrongAnswer, String rightAnswer, String clientName) {
+        rightAnswer = wrongAnswer.equals("yes") ? "no" : "yes";
+        System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'. \n",
+                wrongAnswer, rightAnswer);
+        System.out.printf("Let's try again, %s\n", clientName);
     }
 }

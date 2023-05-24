@@ -1,12 +1,14 @@
-package hexlet.code;
+package hexlet.code.games;
+
+import hexlet.code.Engine;
 
 import java.util.Random;
 import java.util.Scanner;
 
-public class CalcGame {
+public class CalcGame implements Engine {
     public static void calcChoice() {
         Scanner scanner = new Scanner(System.in);
-        String clientName = Games.greetingsClient();
+        String clientName = Engine.greetingsClient();
         System.out.println("What is the result of the expression?");
         int answersCount = 0;
         while (true) {
@@ -22,9 +24,8 @@ public class CalcGame {
                     break;
                 }
             } else {
-                System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'. \n",
-                        clientAnswer, resultOfExpression);
-                System.out.printf("Let's try again, %s\n", clientName);
+                CalcGame calcGame = new CalcGame();
+                calcGame.wrongAnswer(clientAnswer, String.valueOf(resultOfExpression), clientName);
                 break;
             }
         }
@@ -58,4 +59,10 @@ public class CalcGame {
         };
     }
 
+    @Override
+    public void wrongAnswer(String wrongAnswer, String rightAnswer, String clientName) {
+        System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'. \n",
+                wrongAnswer, rightAnswer);
+        System.out.printf("Let's try again, %s\n", clientName);
+    }
 }
