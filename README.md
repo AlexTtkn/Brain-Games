@@ -3,4 +3,4 @@
 <a href="https://codeclimate.com/github/AlexTtkn/java-project-61/maintainability"><img src="https://api.codeclimate.com/v1/badges/f37e76434584945c51fb/maintainability" /></a>
 
 # Asciinema
-https://asciinema.org/a/ZAiDYPxZeeD5SASMRBlkhHnZU
+[Ссылка](https://asciinema.org/a/DilmUEKzONSJq2Uh5SAo8bSyF)
