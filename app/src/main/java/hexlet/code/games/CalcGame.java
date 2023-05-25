@@ -31,7 +31,7 @@ public class CalcGame implements Engine {
         }
     }
 
-    public static String getRandomExpression() {
+    private static String getRandomExpression() {
         StringBuilder stringVersionOfExpression = new StringBuilder();
         int borderForNumber = 20;
         int randomNumber1 = new Random().nextInt(borderForNumber + 1);
@@ -46,7 +46,7 @@ public class CalcGame implements Engine {
         return stringVersionOfExpression.toString();
     }
 
-    public static int gerAsIntRandomExpression(String expression) {
+    private static int gerAsIntRandomExpression(String expression) {
         String[] splitter = expression.split(" ");
         int firstNumber = Integer.parseInt(splitter[0]);
         int secondNumber = Integer.parseInt(splitter[2]);
