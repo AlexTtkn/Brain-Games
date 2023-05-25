@@ -13,4 +13,5 @@ public interface Engine {
     }
 
     void wrongAnswer(String wrongAnswer, String rightAnswer, String clientName);
+    String getQuestion();
 }

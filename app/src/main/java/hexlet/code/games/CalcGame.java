@@ -6,17 +6,25 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class CalcGame implements Engine {
+
+    private static String correctAnswer;
+
+    private static String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    private static void setCorrectAnswer(String correctAnswer) {
+        CalcGame.correctAnswer = correctAnswer;
+    }
     public static void calcChoice() {
         Scanner scanner = new Scanner(System.in);
         String clientName = Engine.greetingsClient();
         System.out.println("What is the result of the expression?");
         int answersCount = 0;
         while (true) {
-            String expression = getRandomExpression();
-            int resultOfExpression = gerAsIntRandomExpression(expression);
-            System.out.printf("Question: %s\n", expression);
+            System.out.println(new CalcGame().getQuestion());
             String clientAnswer = scanner.nextLine();
-            if (Integer.parseInt(clientAnswer) == resultOfExpression) {
+            if (clientAnswer.equals(getCorrectAnswer())) {
                 System.out.printf("Your answer: %s \nCorrect!\n", clientAnswer);
                 answersCount++;
                 if (answersCount == 3) {
@@ -25,7 +33,7 @@ public class CalcGame implements Engine {
                 }
             } else {
                 CalcGame calcGame = new CalcGame();
-                calcGame.wrongAnswer(clientAnswer, String.valueOf(resultOfExpression), clientName);
+                calcGame.wrongAnswer(clientAnswer, getCorrectAnswer(), clientName);
                 break;
             }
         }
@@ -33,9 +41,9 @@ public class CalcGame implements Engine {
 
     private static String getRandomExpression() {
         StringBuilder stringVersionOfExpression = new StringBuilder();
-        int borderForNumber = 20;
-        int randomNumber1 = new Random().nextInt(borderForNumber + 1);
-        int randomNumber2 = new Random().nextInt(borderForNumber + 1);
+        int n = 20;
+        int randomNumber1 = new Random().nextInt(n + 1);
+        int randomNumber2 = new Random().nextInt(n + 1);
         int mathSing = new Random().nextInt(3);
         switch (mathSing) {
             case 0 -> stringVersionOfExpression.append(randomNumber1).append(" + ").append(randomNumber2);
@@ -64,5 +72,13 @@ public class CalcGame implements Engine {
         System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'. \n",
                 wrongAnswer, rightAnswer);
         System.out.printf("Let's try again, %s\n", clientName);
+    }
+
+    @Override
+    public String getQuestion() {
+        String expression = getRandomExpression();
+        int resultOfExpression = gerAsIntRandomExpression(expression);
+        setCorrectAnswer(String.valueOf(resultOfExpression));
+        return "Question: " + expression;
     }
 }

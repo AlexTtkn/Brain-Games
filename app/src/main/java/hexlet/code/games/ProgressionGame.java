@@ -2,10 +2,11 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class EvenGame implements Engine {
+public class ProgressionGame implements Engine {
     private static String correctAnswer;
 
     private static String getCorrectAnswer() {
@@ -13,19 +14,18 @@ public class EvenGame implements Engine {
     }
 
     private static void setCorrectAnswer(String correctAnswer) {
-        EvenGame.correctAnswer = correctAnswer;
+        ProgressionGame.correctAnswer = correctAnswer;
     }
 
-    public static void evenChoice() {
+    public static void progressionChoice() {
         Scanner scanner = new Scanner(System.in);
         String clientName = Engine.greetingsClient();
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+        System.out.println("What number is missing in the progression?");
         int answersCount = 0;
         while (true) {
-            System.out.println(new EvenGame().getQuestion());
+            System.out.println(new ProgressionGame().getQuestion());
             String clientAnswer = scanner.nextLine();
-            if ((Integer.parseInt(getCorrectAnswer()) % 2 == 0 && "yes".equals(clientAnswer))
-                    || ((Integer.parseInt(getCorrectAnswer()) % 2 == 1 && "no".equals(clientAnswer)))) {
+            if (clientAnswer.equals(getCorrectAnswer())) {
                 System.out.printf("Your answer: %s \nCorrect!\n", clientAnswer);
                 answersCount++;
                 if (answersCount == 3) {
@@ -33,8 +33,8 @@ public class EvenGame implements Engine {
                     break;
                 }
             } else {
-                EvenGame evenGame = new EvenGame();
-                evenGame.wrongAnswer(clientAnswer, clientAnswer, clientName);
+                ProgressionGame progressionGame = new ProgressionGame();
+                progressionGame.wrongAnswer(clientAnswer, getCorrectAnswer(), clientName);
                 break;
             }
         }
@@ -42,7 +42,6 @@ public class EvenGame implements Engine {
 
     @Override
     public void wrongAnswer(String wrongAnswer, String rightAnswer, String clientName) {
-        rightAnswer = wrongAnswer.equals("yes") ? "no" : "yes";
         System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'. \n",
                 wrongAnswer, rightAnswer);
         System.out.printf("Let's try again, %s\n", clientName);
@@ -50,9 +49,18 @@ public class EvenGame implements Engine {
 
     @Override
     public String getQuestion() {
-        int n = 1000;
-        int randomNumber = new Random().nextInt(n + 1);
-        setCorrectAnswer(String.valueOf(randomNumber));
-        return ("Question: " + randomNumber);
+        String[] matrix = new String[10];
+        int randomNumber1 = new Random().nextInt(10);
+        int randomNumber2 = new Random().nextInt(10);
+        for (int i = 0; i < matrix.length; i++) {
+            matrix[i] = String.valueOf(randomNumber1);
+            randomNumber1 += randomNumber2;
+        }
+        int pointsPosition = new Random().nextInt(10);
+        String points = "..";
+        setCorrectAnswer(matrix[pointsPosition]);
+        matrix[pointsPosition] = points;
+        return "Question: " + Arrays.toString(matrix);
+
     }
 }
