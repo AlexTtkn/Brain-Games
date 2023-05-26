@@ -34,9 +34,9 @@ public class ProgressionGame {
     private static void printNumbers() {
         for (int i = 0; i < MATRIX.length; i++) {
             if (i == MATRIX.length - 1) {
-                System.out.println(MATRIX[i]);
+                System.out.println();
             } else {
-                System.out.print(MATRIX[i] + ", ");
+                System.out.print(MATRIX[i] + " ");
             }
         }
     }
