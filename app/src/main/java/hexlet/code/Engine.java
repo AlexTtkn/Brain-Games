@@ -28,7 +28,7 @@ public class Engine {
             System.out.println("Correct!");
             answersCount++;
             if (answersCount == 3) {
-                System.out.printf("Congratulations, %s\n", clientName);
+                System.out.printf("Congratulations, %s!\n", clientName);
             }
         }
         return clientAnswer;
