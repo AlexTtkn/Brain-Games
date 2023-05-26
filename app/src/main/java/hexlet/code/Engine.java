@@ -17,7 +17,7 @@ public class Engine {
     public static void wrongAnswer(String wrongAnswer, String rightAnswer, String clientName) {
         System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'. \n",
                 wrongAnswer, rightAnswer);
-        System.out.printf("Let's try again, %s\n", clientName);
+        System.out.printf("Let's try again, %s!\n", clientName);
     }
 
     public static String checkCorrectAnswer(String correctAnswer, String clientName) {
