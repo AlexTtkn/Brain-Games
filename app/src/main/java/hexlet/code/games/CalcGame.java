@@ -3,37 +3,19 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 import java.util.Random;
-import java.util.Scanner;
 
-public class CalcGame implements Engine {
-
-    private static String correctAnswer;
-
-    private static String getCorrectAnswer() {
-        return correctAnswer;
-    }
-
-    private static void setCorrectAnswer(String correctAnswer) {
-        CalcGame.correctAnswer = correctAnswer;
-    }
+public class CalcGame {
     public static void calcChoice() {
-        Scanner scanner = new Scanner(System.in);
         String clientName = Engine.greetingsClient();
         System.out.println("What is the result of the expression?");
-        int answersCount = 0;
-        while (true) {
-            System.out.println(new CalcGame().getQuestion());
-            String clientAnswer = scanner.nextLine();
-            if (clientAnswer.equals(getCorrectAnswer())) {
-                System.out.printf("Your answer: %s \nCorrect!\n", clientAnswer);
-                answersCount++;
-                if (answersCount == 3) {
-                    System.out.printf("Congratulations, %s\n", clientName);
-                    break;
-                }
-            } else {
-                CalcGame calcGame = new CalcGame();
-                calcGame.wrongAnswer(clientAnswer, getCorrectAnswer(), clientName);
+        for (int i = 0; i < 3; i++) {
+            String expression = getRandomExpression();
+            int resultOfExpression = gerAsIntRandomExpression(expression);
+            String correctAnswer = String.valueOf(resultOfExpression);
+            System.out.println("Question: " + expression);
+            String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, clientName);
+            if (!clientAnswer.equals(correctAnswer)) {
+                Engine.wrongAnswer(clientAnswer, correctAnswer, clientName);
                 break;
             }
         }
@@ -67,18 +49,4 @@ public class CalcGame implements Engine {
         };
     }
 
-    @Override
-    public void wrongAnswer(String wrongAnswer, String rightAnswer, String clientName) {
-        System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'. \n",
-                wrongAnswer, rightAnswer);
-        System.out.printf("Let's try again, %s\n", clientName);
-    }
-
-    @Override
-    public String getQuestion() {
-        String expression = getRandomExpression();
-        int resultOfExpression = gerAsIntRandomExpression(expression);
-        setCorrectAnswer(String.valueOf(resultOfExpression));
-        return "Question: " + expression;
-    }
 }
