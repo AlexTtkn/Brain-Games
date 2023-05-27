@@ -7,18 +7,17 @@ import java.util.Random;
 public class ProgressionGame {
     private static final String[] MATRIX = new String[10];
     private static final int BOUND_FOR_PROGRESSION_GAME = 10;
-
     public static void progressionChoice() {
         String clientName = Engine.greetingsClient();
         System.out.println("What number is missing in the progression?");
         for (int i = 0; i < Engine.getCounterOfRounds(); i++) {
-            int randomNumber1 = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME);
-            int randomNumber2 = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME);
+            int randomNumber1 = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME) + Engine.getAdditionalOne();
+            int randomNumber2 = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME) + Engine.getAdditionalOne();
             for (int j = 0; j < MATRIX.length; j++) {
                 MATRIX[j] = String.valueOf(randomNumber1);
                 randomNumber1 += randomNumber2;
             }
-            int pointsPosition = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME);
+            int pointsPosition = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME) + Engine.getAdditionalOne();
             String points = "..";
             String correctAnswer = MATRIX[pointsPosition];
             MATRIX[pointsPosition] = points;

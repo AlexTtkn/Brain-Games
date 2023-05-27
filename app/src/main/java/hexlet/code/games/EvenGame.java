@@ -10,7 +10,7 @@ public class EvenGame {
         String clientName = Engine.greetingsClient();
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         for (int i = 0; i < Engine.getCounterOfRounds(); i++) {
-            int randomNumber = new Random().nextInt(BOUND_FOR_EVEN_GAME);
+            int randomNumber = new Random().nextInt(BOUND_FOR_EVEN_GAME) + Engine.getAdditionalOne();
             String correctAnswer = randomNumber % 2 == 0 ? "yes" : "no";
             System.out.println("Question: " + randomNumber);
             String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, clientName);

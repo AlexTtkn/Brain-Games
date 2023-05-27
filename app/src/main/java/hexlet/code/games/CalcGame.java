@@ -25,9 +25,9 @@ public class CalcGame {
 
     private static String getRandomExpression() {
         StringBuilder stringVersionOfExpression = new StringBuilder();
-        int randomNumber1 = new Random().nextInt(BOUND_FOR_CALC_GAME);
-        int randomNumber2 = new Random().nextInt(BOUND_FOR_CALC_GAME);
-        int mathSing = new Random().nextInt(3);
+        int randomNumber1 = new Random().nextInt(BOUND_FOR_CALC_GAME) + Engine.getAdditionalOne();
+        int randomNumber2 = new Random().nextInt(BOUND_FOR_CALC_GAME) + Engine.getAdditionalOne();
+        int mathSing = new Random().nextInt(BOUND_FOR_CALC_GAME) + Engine.getAdditionalOne();
         switch (mathSing) {
             case 0 -> stringVersionOfExpression.append(randomNumber1).append(" + ").append(randomNumber2);
             case 1 -> stringVersionOfExpression.append(randomNumber1).append(" - ").append(randomNumber2);

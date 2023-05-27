@@ -13,6 +13,11 @@ public class Engine {
         Engine.answersCount = answersCount;
     }
 
+    private static final int ADDITIONAL_ONE = 1;
+
+    public static int getAdditionalOne() {
+        return ADDITIONAL_ONE;
+    }
     private static final int COUNTER_OF_ROUNDS = 3;
 
     public static int getCounterOfRounds() {

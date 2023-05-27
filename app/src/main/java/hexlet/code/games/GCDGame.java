@@ -10,8 +10,8 @@ public class GCDGame {
         String clientName = Engine.greetingsClient();
         System.out.println("Find the greatest common divisor of given numbers.");
         for (int i = 0; i < Engine.getCounterOfRounds(); i++) {
-            int randomNumber1 = new Random().nextInt(BOUNDS_FOR_GCD_GAME);
-            int randomNumber2 = new Random().nextInt(BOUNDS_FOR_GCD_GAME);
+            int randomNumber1 = new Random().nextInt(BOUNDS_FOR_GCD_GAME) + Engine.getAdditionalOne();
+            int randomNumber2 = new Random().nextInt(BOUNDS_FOR_GCD_GAME) + Engine.getAdditionalOne();
             String correctAnswer = String.valueOf(getNod(randomNumber1, randomNumber2));
             System.out.println("Question: " + randomNumber1 + " " + randomNumber2);
             String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, clientName);

@@ -11,7 +11,7 @@ public class PrimeGame {
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
 
         for (int i = 0; i < Engine.getCounterOfRounds(); i++) {
-            int randomNumber = new Random().nextInt(BOUND_FOR_PRIME_GAME);
+            int randomNumber = new Random().nextInt(BOUND_FOR_PRIME_GAME) + Engine.getAdditionalOne();
             String correctAnswer = isPrime(randomNumber);
             System.out.println("Question: " + randomNumber);
             String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, clientName);
