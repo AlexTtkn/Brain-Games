@@ -11,13 +11,13 @@ public class ProgressionGame {
         String clientName = Engine.greetingsClient();
         System.out.println("What number is missing in the progression?");
         for (int i = 0; i < Engine.getCounterOfRounds(); i++) {
-            int randomNumber1 = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME) + Engine.getAdditionalOne();
-            int randomNumber2 = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME) + Engine.getAdditionalOne();
+            int randomNumber1 = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME);
+            int randomNumber2 = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME);
             for (int j = 0; j < MATRIX.length; j++) {
                 MATRIX[j] = String.valueOf(randomNumber1);
                 randomNumber1 += randomNumber2;
             }
-            int pointsPosition = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME) + Engine.getAdditionalOne();
+            int pointsPosition = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME);
             String points = "..";
             String correctAnswer = MATRIX[pointsPosition];
             MATRIX[pointsPosition] = points;
