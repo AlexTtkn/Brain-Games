@@ -5,9 +5,9 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public class ProgressionGame {
-    private static final String[] MATRIX = new String[10];
     private static final int BOUND_FOR_PROGRESSION_GAME = 10;
-    public static void progressionChoice() {
+    private static final String[] MATRIX = new String[BOUND_FOR_PROGRESSION_GAME];
+        public static void progressionChoice() {
         String clientName = Engine.greetingsClient();
         System.out.println("What number is missing in the progression?");
         for (int i = 0; i < Engine.getCounterOfRounds(); i++) {

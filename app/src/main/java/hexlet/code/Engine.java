@@ -3,14 +3,14 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    private static int answersCount;
+    private static int answersCounter;
 
-    public static int getAnswersCount() {
-        return answersCount;
+    public static int getAnswersCounter() {
+        return answersCounter;
     }
 
-    public static void setAnswersCount(int answersCount) {
-        Engine.answersCount = answersCount;
+    public static void setAnswersCounter(int answersCounter) {
+        Engine.answersCounter = answersCounter;
     }
 
     private static final int ADDITIONAL_ONE = 1;
@@ -45,8 +45,8 @@ public class Engine {
         String clientAnswer = scanner.nextLine();
         if (clientAnswer.equals(correctAnswer)) {
             System.out.println("Correct!");
-            answersCount++;
-            if (answersCount == COUNTER_OF_ROUNDS) {
+            answersCounter++;
+            if (answersCounter == COUNTER_OF_ROUNDS) {
                 System.out.printf("Congratulations, %s!\n", clientName);
             }
         }
