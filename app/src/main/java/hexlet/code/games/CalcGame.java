@@ -27,7 +27,7 @@ public class CalcGame {
         StringBuilder stringVersionOfExpression = new StringBuilder();
         int randomNumber1 = new Random().nextInt(BOUND_FOR_CALC_GAME) + Engine.getAdditionalOne();
         int randomNumber2 = new Random().nextInt(BOUND_FOR_CALC_GAME) + Engine.getAdditionalOne();
-        int mathSing = new Random().nextInt(BOUND_FOR_CALC_GAME) + Engine.getAdditionalOne();
+        int mathSing = new Random().nextInt(Engine.getCounterOfRounds());
         switch (mathSing) {
             case 0 -> stringVersionOfExpression.append(randomNumber1).append(" + ").append(randomNumber2);
             case 1 -> stringVersionOfExpression.append(randomNumber1).append(" - ").append(randomNumber2);
