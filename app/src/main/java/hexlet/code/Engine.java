@@ -3,7 +3,21 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    public static int answersCount;
+    private static int answersCount;
+
+    public static int getAnswersCount() {
+        return answersCount;
+    }
+
+    public static void setAnswersCount(int answersCount) {
+        Engine.answersCount = answersCount;
+    }
+
+    private static final int COUNTER_OF_ROUNDS = 3;
+
+    public static int getCounterOfRounds() {
+        return COUNTER_OF_ROUNDS;
+    }
 
     public static String greetingsClient() {
         Scanner scanner = new Scanner(System.in);
@@ -27,7 +41,7 @@ public class Engine {
         if (clientAnswer.equals(correctAnswer)) {
             System.out.println("Correct!");
             answersCount++;
-            if (answersCount == 3) {
+            if (answersCount == COUNTER_OF_ROUNDS) {
                 System.out.printf("Congratulations, %s!\n", clientName);
             }
         }

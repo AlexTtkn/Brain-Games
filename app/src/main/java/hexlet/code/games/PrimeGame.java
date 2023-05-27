@@ -5,13 +5,13 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public class PrimeGame {
+    private static final int BOUND_FOR_PRIME_GAME = 3571;
     public static void primeChoice() {
         String clientName = Engine.greetingsClient();
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
 
-        for (int i = 0; i < 3; i++) {
-            int n = 3571;
-            int randomNumber = new Random().nextInt(n + 1);
+        for (int i = 0; i < Engine.getCounterOfRounds(); i++) {
+            int randomNumber = new Random().nextInt(BOUND_FOR_PRIME_GAME);
             String correctAnswer = isPrime(randomNumber);
             System.out.println("Question: " + randomNumber);
             String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, clientName);

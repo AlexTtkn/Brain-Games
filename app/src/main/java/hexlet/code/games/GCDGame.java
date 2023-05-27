@@ -5,12 +5,13 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public class GCDGame {
+    private static final int BOUNDS_FOR_GCD_GAME = 100;
     public static void gcdChoice() {
         String clientName = Engine.greetingsClient();
         System.out.println("Find the greatest common divisor of given numbers.");
-        for (int i = 0; i < 3; i++) {
-            int randomNumber1 = new Random().nextInt(100);
-            int randomNumber2 = new Random().nextInt(100);
+        for (int i = 0; i < Engine.getCounterOfRounds(); i++) {
+            int randomNumber1 = new Random().nextInt(BOUNDS_FOR_GCD_GAME);
+            int randomNumber2 = new Random().nextInt(BOUNDS_FOR_GCD_GAME);
             String correctAnswer = String.valueOf(getNod(randomNumber1, randomNumber2));
             System.out.println("Question: " + randomNumber1 + " " + randomNumber2);
             String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, clientName);

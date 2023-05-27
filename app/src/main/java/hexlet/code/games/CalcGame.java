@@ -5,10 +5,12 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public class CalcGame {
+    private static final int BOUND_FOR_CALC_GAME = 20;
+
     public static void calcChoice() {
         String clientName = Engine.greetingsClient();
         System.out.println("What is the result of the expression?");
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < Engine.getCounterOfRounds(); i++) {
             String expression = getRandomExpression();
             int resultOfExpression = gerAsIntRandomExpression(expression);
             String correctAnswer = String.valueOf(resultOfExpression);
@@ -23,9 +25,8 @@ public class CalcGame {
 
     private static String getRandomExpression() {
         StringBuilder stringVersionOfExpression = new StringBuilder();
-        int n = 20;
-        int randomNumber1 = new Random().nextInt(n + 1);
-        int randomNumber2 = new Random().nextInt(n + 1);
+        int randomNumber1 = new Random().nextInt(BOUND_FOR_CALC_GAME);
+        int randomNumber2 = new Random().nextInt(BOUND_FOR_CALC_GAME);
         int mathSing = new Random().nextInt(3);
         switch (mathSing) {
             case 0 -> stringVersionOfExpression.append(randomNumber1).append(" + ").append(randomNumber2);
