@@ -8,46 +8,41 @@ public class CalcGame {
     private static final int BOUND_FOR_CALC_GAME = 20;
 
     public static void calcChoice() {
-        String clientName = Engine.greetingsClient();
+        Engine.greetingsClient();
         System.out.println("What is the result of the expression?");
         for (int i = 0; i < Engine.getCounterOfRounds(); i++) {
-            String expression = getRandomExpression();
-            int resultOfExpression = gerAsIntRandomExpression(expression);
-            String correctAnswer = String.valueOf(resultOfExpression);
-            System.out.println("Question: " + expression);
-            String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, clientName);
+            int randomNumber1 = new Random().nextInt(BOUND_FOR_CALC_GAME) + Engine.getAdditionalOne();
+            int randomNumber2 = new Random().nextInt(BOUND_FOR_CALC_GAME) + Engine.getAdditionalOne();
+            char[] operators = {'+', '-', '*'};
+            int index = new Random().nextInt(operators.length);
+            char operator = operators[index];
+            String correctAnswer = String.valueOf(countCorrectAnswer(randomNumber1, randomNumber2, operator));
+            String gameQuestion = "Question: " + getRandomQuestion(randomNumber1, randomNumber2, index);
+            String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, gameQuestion);
             if (!clientAnswer.equals(correctAnswer)) {
-                Engine.wrongAnswer(clientAnswer, correctAnswer, clientName);
+                Engine.printWrongAnswer(clientAnswer, correctAnswer);
                 break;
             }
         }
     }
 
-    private static String getRandomExpression() {
-        StringBuilder stringVersionOfExpression = new StringBuilder();
-        int randomNumber1 = new Random().nextInt(BOUND_FOR_CALC_GAME) + Engine.getAdditionalOne();
-        int randomNumber2 = new Random().nextInt(BOUND_FOR_CALC_GAME) + Engine.getAdditionalOne();
-        int mathSing = new Random().nextInt(Engine.getCounterOfRounds());
+    private static String getRandomQuestion(int num1, int num2, int mathSing) {
+        StringBuilder stringVersionOfQuestion = new StringBuilder();
         switch (mathSing) {
-            case 0 -> stringVersionOfExpression.append(randomNumber1).append(" + ").append(randomNumber2);
-            case 1 -> stringVersionOfExpression.append(randomNumber1).append(" - ").append(randomNumber2);
-            case 2 -> stringVersionOfExpression.append(randomNumber1).append(" * ").append(randomNumber2);
+            case 0 -> stringVersionOfQuestion.append(num1).append(" + ").append(num2);
+            case 1 -> stringVersionOfQuestion.append(num1).append(" - ").append(num2);
+            case 2 -> stringVersionOfQuestion.append(num1).append(" * ").append(num2);
             default -> System.out.println("Something wrong");
         }
-        return stringVersionOfExpression.toString();
+        return stringVersionOfQuestion.toString();
     }
 
-    private static int gerAsIntRandomExpression(String expression) {
-        String[] splitter = expression.split(" ");
-        int firstNumber = Integer.parseInt(splitter[0]);
-        int secondNumber = Integer.parseInt(splitter[2]);
-        char mathSing = splitter[1].charAt(0);
-        return switch (mathSing) {
-            case '+' -> firstNumber + secondNumber;
-            case '-' -> firstNumber - secondNumber;
-            case '*' -> firstNumber * secondNumber;
-            default -> throw new IllegalStateException("Unexpected value: " + mathSing);
+    private static int countCorrectAnswer(int num1, int num2, char operator) {
+        return switch (operator) {
+            case '+' -> num1 + num2;
+            case '-' -> num1 - num2;
+            case '*' -> num1 * num2;
+            default -> throw new IllegalStateException("Unexpected value: " + operator);
         };
     }
-
 }

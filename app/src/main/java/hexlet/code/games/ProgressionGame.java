@@ -7,8 +7,9 @@ import java.util.Random;
 public class ProgressionGame {
     private static final int BOUND_FOR_PROGRESSION_GAME = 10;
     private static final String[] MATRIX = new String[BOUND_FOR_PROGRESSION_GAME];
-        public static void progressionChoice() {
-        String clientName = Engine.greetingsClient();
+
+    public static void progressionChoice() {
+        Engine.greetingsClient();
         System.out.println("What number is missing in the progression?");
         for (int i = 0; i < Engine.getCounterOfRounds(); i++) {
             int randomNumber1 = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME);
@@ -18,26 +19,31 @@ public class ProgressionGame {
                 randomNumber1 += randomNumber2;
             }
             int pointsPosition = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME);
-            String points = "..";
-            String correctAnswer = MATRIX[pointsPosition];
-            MATRIX[pointsPosition] = points;
-            System.out.print("Question: ");
-            printNumbers();
-            String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, clientName);
+            String correctAnswer = countCorrectAnswer(pointsPosition);
+            String gameQuestion = "Question: " + printNumbers(pointsPosition);
+            String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, gameQuestion);
             if (!clientAnswer.equals(correctAnswer)) {
-                Engine.wrongAnswer(clientAnswer, correctAnswer, clientName);
+                Engine.printWrongAnswer(clientAnswer, correctAnswer);
                 break;
             }
         }
     }
 
-    private static void printNumbers() {
+    private static String countCorrectAnswer(int hideNum) {
+        return String.valueOf(ProgressionGame.MATRIX[hideNum]);
+    }
+
+    private static String printNumbers(int hidePos) {
+        StringBuilder str = new StringBuilder();
+        String points = "..";
+        MATRIX[hidePos] = points;
         for (int i = 0; i < MATRIX.length; i++) {
             if (i == MATRIX.length - 1) {
-                System.out.println();
+                str.append(MATRIX[i]);
             } else {
-                System.out.print(MATRIX[i] + " ");
+                str.append(MATRIX[i]).append(" ");
             }
         }
+        return str.toString();
     }
 }

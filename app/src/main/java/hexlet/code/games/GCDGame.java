@@ -6,30 +6,31 @@ import java.util.Random;
 
 public class GCDGame {
     private static final int BOUNDS_FOR_GCD_GAME = 100;
+
     public static void gcdChoice() {
-        String clientName = Engine.greetingsClient();
+        Engine.greetingsClient();
         System.out.println("Find the greatest common divisor of given numbers.");
         for (int i = 0; i < Engine.getCounterOfRounds(); i++) {
             int randomNumber1 = new Random().nextInt(BOUNDS_FOR_GCD_GAME) + Engine.getAdditionalOne();
             int randomNumber2 = new Random().nextInt(BOUNDS_FOR_GCD_GAME) + Engine.getAdditionalOne();
-            String correctAnswer = String.valueOf(getNod(randomNumber1, randomNumber2));
-            System.out.println("Question: " + randomNumber1 + " " + randomNumber2);
-            String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, clientName);
+            String correctAnswer = String.valueOf(countCorrectAnswer(randomNumber1, randomNumber2));
+            String gameQuestion = "Question: " + randomNumber1 + " " + randomNumber2;
+            String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, gameQuestion);
             if (!clientAnswer.equals(correctAnswer)) {
-                Engine.wrongAnswer(clientAnswer, correctAnswer, clientName);
+                Engine.printWrongAnswer(clientAnswer, correctAnswer);
                 break;
             }
         }
     }
 
-    private static int getNod(int number1, int number2) {
-        while (number1 != 0 && number2 != 0) {
-            if (number1 > number2) {
-                number1 %= number2;
+    private static int countCorrectAnswer(int a, int b) {
+        while (a != 0 && b != 0) {
+            if (a > b) {
+                a %= b;
             } else {
-                number2 %= number1;
+                b %= a;
             }
         }
-        return number1 + number2;
+        return a + b;
     }
 }

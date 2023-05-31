@@ -3,6 +3,12 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
+    private static String clientName;
+
+    public static String getClientName() {
+        return clientName;
+    }
+
     private static int answersCounter;
 
     public static int getAnswersCounter() {
@@ -21,23 +27,23 @@ public class Engine {
         return COUNTER_OF_ROUNDS;
     }
 
-    public static String greetingsClient() {
+    public static void greetingsClient() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
-        String clientName = scanner.nextLine();
+        clientName = scanner.nextLine();
         System.out.printf("Hello, %s! \n", clientName);
-        return clientName;
     }
 
-    public static void wrongAnswer(String wrongAnswer, String rightAnswer, String clientName) {
+    public static void printWrongAnswer(String clientAnswer, String correctAnswer) {
         System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'. \n",
-                wrongAnswer, rightAnswer);
+                clientAnswer, correctAnswer);
         System.out.printf("Let's try again, %s!\n", clientName);
     }
 
-    public static String checkCorrectAnswer(String correctAnswer, String clientName) {
+    public static String checkCorrectAnswer(String correctAnswer, String gameQuestion) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println(gameQuestion);
         System.out.print("Your answer: ");
         String clientAnswer = scanner.nextLine();
         if (clientAnswer.equals(correctAnswer)) {
@@ -48,5 +54,6 @@ public class Engine {
             }
         }
         return clientAnswer;
+
     }
 }

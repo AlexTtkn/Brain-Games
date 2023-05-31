@@ -6,18 +6,23 @@ import java.util.Random;
 
 public class EvenGame {
     private static final int BOUND_FOR_EVEN_GAME = 1000;
+
     public static void evenChoice() {
-        String clientName = Engine.greetingsClient();
+        Engine.greetingsClient();
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         for (int i = 0; i < Engine.getCounterOfRounds(); i++) {
             int randomNumber = new Random().nextInt(BOUND_FOR_EVEN_GAME) + Engine.getAdditionalOne();
-            String correctAnswer = randomNumber % 2 == 0 ? "yes" : "no";
-            System.out.println("Question: " + randomNumber);
-            String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, clientName);
+            String correctAnswer = isEven(randomNumber) ? "yes" : "no";
+            String gameQuestion = "Question: " + randomNumber;
+            String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, gameQuestion);
             if (!clientAnswer.equals(correctAnswer)) {
-                Engine.wrongAnswer(clientAnswer, correctAnswer, clientName);
+                Engine.printWrongAnswer(clientAnswer, correctAnswer);
                 break;
             }
         }
+    }
+
+    private static boolean isEven(int num1) {
+        return num1 % 2 == 0;
     }
 }
