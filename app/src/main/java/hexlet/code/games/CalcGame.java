@@ -1,5 +1,6 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
 import hexlet.code.Engine;
 
 import java.util.Random;
@@ -8,22 +9,19 @@ public class CalcGame {
     private static final int BOUND_FOR_CALC_GAME = 20;
 
     public static void calcChoice() {
-        Engine.greetingsClient();
+        Cli.greetingsClient();
         System.out.println("What is the result of the expression?");
-        for (int i = 0; i < Engine.getCounterOfRounds(); i++) {
-            int randomNumber1 = new Random().nextInt(BOUND_FOR_CALC_GAME) + Engine.getAdditionalOne();
-            int randomNumber2 = new Random().nextInt(BOUND_FOR_CALC_GAME) + Engine.getAdditionalOne();
+        for (int i = 0; i < Engine.COUNTER_OF_ROUNDS; i++) {
+            int randomNumber1 = new Random().nextInt(BOUND_FOR_CALC_GAME) + Engine.ADDITIONAL_ONE;
+            int randomNumber2 = new Random().nextInt(BOUND_FOR_CALC_GAME) + Engine.ADDITIONAL_ONE;
             char[] operators = {'+', '-', '*'};
             int index = new Random().nextInt(operators.length);
             char operator = operators[index];
             String correctAnswer = String.valueOf(countCorrectAnswer(randomNumber1, randomNumber2, operator));
             String gameQuestion = "Question: " + getRandomQuestion(randomNumber1, randomNumber2, index);
-            String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, gameQuestion);
-            if (!clientAnswer.equals(correctAnswer)) {
-                Engine.printWrongAnswer(clientAnswer, correctAnswer);
-                break;
-            }
+            Engine.mapToStoreResponses.put(gameQuestion, correctAnswer);
         }
+        Engine.checkCorrectAnswer(Engine.mapToStoreResponses);
     }
 
     private static String getRandomQuestion(int num1, int num2, int mathSing) {

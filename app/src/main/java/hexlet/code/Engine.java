@@ -1,59 +1,42 @@
 package hexlet.code;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Engine {
-    private static String clientName;
+    public static Map<String, String> mapToStoreResponses = new HashMap<>();
+    public static int answersCounter;
+    public static final int ADDITIONAL_ONE = 1;
+    public static final int COUNTER_OF_ROUNDS = 3;
 
-    public static String getClientName() {
-        return clientName;
-    }
-
-    private static int answersCounter;
-
-    public static int getAnswersCounter() {
-        return answersCounter;
-    }
-
-    private static final int ADDITIONAL_ONE = 1;
-
-    public static int getAdditionalOne() {
-        return ADDITIONAL_ONE;
-    }
-
-    private static final int COUNTER_OF_ROUNDS = 3;
-
-    public static int getCounterOfRounds() {
-        return COUNTER_OF_ROUNDS;
-    }
-
-    public static void greetingsClient() {
+    public static void checkCorrectAnswer(Map<String, String> map) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the Brain Games!");
-        System.out.print("May I have your name? ");
-        clientName = scanner.nextLine();
-        System.out.printf("Hello, %s! \n", clientName);
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            System.out.println(entry.getKey());
+            System.out.print("Your answer: ");
+            String clientAnswer = scanner.nextLine();
+            if (clientAnswer.equals(entry.getValue())) {
+                System.out.println("Correct!");
+                answersCounter++;
+                printCongratulations();
+            } else {
+                printWrongAnswer(clientAnswer, entry.getValue());
+                break;
+            }
+
+        }
     }
 
-    public static void printWrongAnswer(String clientAnswer, String correctAnswer) {
+    private static void printCongratulations() {
+        if (answersCounter == COUNTER_OF_ROUNDS) {
+            System.out.printf("Congratulations, %s!\n", Cli.clientName);
+        }
+    }
+
+    private static void printWrongAnswer(String clientAnswer, String correctAnswer) {
         System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'. \n",
                 clientAnswer, correctAnswer);
-        System.out.printf("Let's try again, %s!\n", clientName);
-    }
-
-    public static String checkCorrectAnswer(String correctAnswer, String gameQuestion) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(gameQuestion);
-        System.out.print("Your answer: ");
-        String clientAnswer = scanner.nextLine();
-        if (clientAnswer.equals(correctAnswer)) {
-            System.out.println("Correct!");
-            answersCounter++;
-            if (answersCounter == COUNTER_OF_ROUNDS) {
-                System.out.printf("Congratulations, %s!\n", clientName);
-            }
-        }
-        return clientAnswer;
-
+        System.out.printf("Let's try again, %s!\n", Cli.clientName);
     }
 }

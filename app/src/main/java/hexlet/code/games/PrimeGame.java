@@ -1,5 +1,6 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
 import hexlet.code.Engine;
 
 import java.util.Random;
@@ -8,19 +9,15 @@ public class PrimeGame {
     private static final int BOUND_FOR_PRIME_GAME = 3571;
 
     public static void primeChoice() {
-        Engine.greetingsClient();
+        Cli.greetingsClient();
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-
-        for (int i = 0; i < Engine.getCounterOfRounds(); i++) {
-            int randomNumber = new Random().nextInt(BOUND_FOR_PRIME_GAME) + Engine.getAdditionalOne();
+        for (int i = 0; i < Engine.COUNTER_OF_ROUNDS; i++) {
+            int randomNumber = new Random().nextInt(BOUND_FOR_PRIME_GAME) + Engine.ADDITIONAL_ONE;
             String correctAnswer = isPrime(randomNumber) ? "yes" : "no";
             String gameQuestion = "Question: " + randomNumber;
-            String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, gameQuestion);
-            if (!clientAnswer.equals(correctAnswer)) {
-                Engine.printWrongAnswer(clientAnswer, correctAnswer);
-                break;
-            }
+            Engine.mapToStoreResponses.put(gameQuestion, correctAnswer);
         }
+        Engine.checkCorrectAnswer(Engine.mapToStoreResponses);
     }
 
     private static boolean isPrime(int number) {

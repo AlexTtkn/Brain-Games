@@ -1,5 +1,6 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
 import hexlet.code.Engine;
 
 import java.util.Random;
@@ -8,18 +9,15 @@ public class EvenGame {
     private static final int BOUND_FOR_EVEN_GAME = 1000;
 
     public static void evenChoice() {
-        Engine.greetingsClient();
+        Cli.greetingsClient();
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        for (int i = 0; i < Engine.getCounterOfRounds(); i++) {
-            int randomNumber = new Random().nextInt(BOUND_FOR_EVEN_GAME) + Engine.getAdditionalOne();
+        for (int i = 0; i < Engine.COUNTER_OF_ROUNDS; i++) {
+            int randomNumber = new Random().nextInt(BOUND_FOR_EVEN_GAME) + Engine.ADDITIONAL_ONE;
             String correctAnswer = isEven(randomNumber) ? "yes" : "no";
             String gameQuestion = "Question: " + randomNumber;
-            String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, gameQuestion);
-            if (!clientAnswer.equals(correctAnswer)) {
-                Engine.printWrongAnswer(clientAnswer, correctAnswer);
-                break;
-            }
+            Engine.mapToStoreResponses.put(gameQuestion, correctAnswer);
         }
+        Engine.checkCorrectAnswer(Engine.mapToStoreResponses);
     }
 
     private static boolean isEven(int num1) {

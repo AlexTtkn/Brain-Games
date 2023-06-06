@@ -1,5 +1,6 @@
 package hexlet.code.games;
 
+import hexlet.code.Cli;
 import hexlet.code.Engine;
 
 import java.util.Random;
@@ -8,19 +9,16 @@ public class GCDGame {
     private static final int BOUNDS_FOR_GCD_GAME = 100;
 
     public static void gcdChoice() {
-        Engine.greetingsClient();
+        Cli.greetingsClient();
         System.out.println("Find the greatest common divisor of given numbers.");
-        for (int i = 0; i < Engine.getCounterOfRounds(); i++) {
-            int randomNumber1 = new Random().nextInt(BOUNDS_FOR_GCD_GAME) + Engine.getAdditionalOne();
-            int randomNumber2 = new Random().nextInt(BOUNDS_FOR_GCD_GAME) + Engine.getAdditionalOne();
+        for (int i = 0; i < Engine.COUNTER_OF_ROUNDS; i++) {
+            int randomNumber1 = new Random().nextInt(BOUNDS_FOR_GCD_GAME) + Engine.ADDITIONAL_ONE;
+            int randomNumber2 = new Random().nextInt(BOUNDS_FOR_GCD_GAME) + Engine.ADDITIONAL_ONE;
             String correctAnswer = String.valueOf(countCorrectAnswer(randomNumber1, randomNumber2));
             String gameQuestion = "Question: " + randomNumber1 + " " + randomNumber2;
-            String clientAnswer = Engine.checkCorrectAnswer(correctAnswer, gameQuestion);
-            if (!clientAnswer.equals(correctAnswer)) {
-                Engine.printWrongAnswer(clientAnswer, correctAnswer);
-                break;
-            }
+            Engine.mapToStoreResponses.put(gameQuestion, correctAnswer);
         }
+        Engine.checkCorrectAnswer(Engine.mapToStoreResponses);
     }
 
     private static int countCorrectAnswer(int a, int b) {
