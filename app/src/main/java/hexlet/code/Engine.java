@@ -11,7 +11,7 @@ public class Engine {
         return MAP_TO_STORE_RESPONSES;
     }
 
-    public static int answersCounter;
+    private static int answersCounter;
 
     public static int getAnswersCounter() {
         return answersCounter;

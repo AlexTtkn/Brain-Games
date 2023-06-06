@@ -12,9 +12,9 @@ public class EvenGame {
         Cli.greetingsClient();
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         for (int i = 0; i < Engine.COUNTER_OF_ROUNDS; i++) {
-            int randomNumber = new Random().nextInt(BOUND_FOR_EVEN_GAME) + Engine.ADDITIONAL_ONE;
-            String correctAnswer = isEven(randomNumber) ? "yes" : "no";
-            String gameQuestion = "Question: " + randomNumber;
+            int numberForEvenGame = new Random().nextInt(BOUND_FOR_EVEN_GAME) + Engine.ADDITIONAL_ONE;
+            String correctAnswer = isEven(numberForEvenGame) ? "yes" : "no";
+            String gameQuestion = "Question: " + numberForEvenGame;
             Engine.getMapToStoreResponses().put(gameQuestion, correctAnswer);
         }
         Engine.checkCorrectAnswer(Engine.getMapToStoreResponses());
