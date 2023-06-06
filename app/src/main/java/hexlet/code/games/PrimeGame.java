@@ -15,9 +15,9 @@ public class PrimeGame {
             int randomNumber = new Random().nextInt(BOUND_FOR_PRIME_GAME) + Engine.ADDITIONAL_ONE;
             String correctAnswer = isPrime(randomNumber) ? "yes" : "no";
             String gameQuestion = "Question: " + randomNumber;
-            Engine.mapToStoreResponses.put(gameQuestion, correctAnswer);
+            Engine.getMapToStoreResponses().put(gameQuestion, correctAnswer);
         }
-        Engine.checkCorrectAnswer(Engine.mapToStoreResponses);
+        Engine.checkCorrectAnswer(Engine.getMapToStoreResponses());
     }
 
     private static boolean isPrime(int number) {

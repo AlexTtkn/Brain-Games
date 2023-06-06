@@ -19,9 +19,9 @@ public class CalcGame {
             char operator = operators[index];
             String correctAnswer = String.valueOf(countCorrectAnswer(randomNumber1, randomNumber2, operator));
             String gameQuestion = "Question: " + getRandomQuestion(randomNumber1, randomNumber2, index);
-            Engine.mapToStoreResponses.put(gameQuestion, correctAnswer);
+            Engine.getMapToStoreResponses().put(gameQuestion, correctAnswer);
         }
-        Engine.checkCorrectAnswer(Engine.mapToStoreResponses);
+        Engine.checkCorrectAnswer(Engine.getMapToStoreResponses());
     }
 
     private static String getRandomQuestion(int num1, int num2, int mathSing) {

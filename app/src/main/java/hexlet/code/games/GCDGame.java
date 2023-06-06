@@ -16,9 +16,9 @@ public class GCDGame {
             int randomNumber2 = new Random().nextInt(BOUNDS_FOR_GCD_GAME) + Engine.ADDITIONAL_ONE;
             String correctAnswer = String.valueOf(countCorrectAnswer(randomNumber1, randomNumber2));
             String gameQuestion = "Question: " + randomNumber1 + " " + randomNumber2;
-            Engine.mapToStoreResponses.put(gameQuestion, correctAnswer);
+            Engine.getMapToStoreResponses().put(gameQuestion, correctAnswer);
         }
-        Engine.checkCorrectAnswer(Engine.mapToStoreResponses);
+        Engine.checkCorrectAnswer(Engine.getMapToStoreResponses());
     }
 
     private static int countCorrectAnswer(int a, int b) {

@@ -16,9 +16,9 @@ public class ProgressionGame {
             generateQuestion();
             String correctAnswer = hireCorrectNumber();
             String gameQuestion = "Question: " + printNumbers();
-            Engine.mapToStoreResponses.put(gameQuestion, correctAnswer);
+            Engine.getMapToStoreResponses().put(gameQuestion, correctAnswer);
         }
-        Engine.checkCorrectAnswer(Engine.mapToStoreResponses);
+        Engine.checkCorrectAnswer(Engine.getMapToStoreResponses());
     }
 
     private static String printNumbers() {

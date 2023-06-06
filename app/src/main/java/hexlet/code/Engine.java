@@ -5,8 +5,18 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Engine {
-    public static Map<String, String> mapToStoreResponses = new HashMap<>();
+    private static final Map<String, String> MAP_TO_STORE_RESPONSES = new HashMap<>();
+
+    public static Map<String, String> getMapToStoreResponses() {
+        return MAP_TO_STORE_RESPONSES;
+    }
+
     public static int answersCounter;
+
+    public static int getAnswersCounter() {
+        return answersCounter;
+    }
+
     public static final int ADDITIONAL_ONE = 1;
     public static final int COUNTER_OF_ROUNDS = 3;
 
@@ -30,13 +40,13 @@ public class Engine {
 
     private static void printCongratulations() {
         if (answersCounter == COUNTER_OF_ROUNDS) {
-            System.out.printf("Congratulations, %s!\n", Cli.clientName);
+            System.out.printf("Congratulations, %s!\n", Cli.getClientName());
         }
     }
 
     private static void printWrongAnswer(String clientAnswer, String correctAnswer) {
         System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'. \n",
                 clientAnswer, correctAnswer);
-        System.out.printf("Let's try again, %s!\n", Cli.clientName);
+        System.out.printf("Let's try again, %s!\n", Cli.getClientName());
     }
 }
