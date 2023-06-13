@@ -9,7 +9,7 @@ import java.util.Random;
 public class CalcGame {
     private static final int BOUND_FOR_CALC_GAME = 20;
 
-    public static void startCalc() {
+    public static void start() {
         System.out.println("What is the result of the expression?");
         Map<String, String> storeResponses = new HashMap<>();
         for (int i = 0; i < Engine.COUNTER_OF_ROUNDS; i++) {
@@ -18,14 +18,14 @@ public class CalcGame {
             char[] operators = {'+', '-', '*'};
             int index = new Random().nextInt(operators.length);
             char operator = operators[index];
-            String correctAnswer = String.valueOf(countCorrectAnswer(randomNumber1, randomNumber2, operator));
-            String gameQuestion = "Question: " + getRandomQuestion(randomNumber1, randomNumber2, index);
+            String correctAnswer = String.valueOf(getCorrectAnswer(randomNumber1, randomNumber2, operator));
+            String gameQuestion = "Question: " + generateQuestion(randomNumber1, randomNumber2, index);
             storeResponses.put(gameQuestion, correctAnswer);
         }
         Engine.run(storeResponses);
     }
 
-    private static String getRandomQuestion(int num1, int num2, int mathSing) {
+    private static String generateQuestion(int num1, int num2, int mathSing) {
         StringBuilder stringVersionOfQuestion = new StringBuilder();
         switch (mathSing) {
             case 0 -> stringVersionOfQuestion.append(num1).append(" + ").append(num2);
@@ -36,7 +36,7 @@ public class CalcGame {
         return stringVersionOfQuestion.toString();
     }
 
-    private static int countCorrectAnswer(int num1, int num2, char operator) {
+    private static int getCorrectAnswer(int num1, int num2, char operator) {
         return switch (operator) {
             case '+' -> num1 + num2;
             case '-' -> num1 - num2;
