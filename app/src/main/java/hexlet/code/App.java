@@ -25,23 +25,23 @@ public class App {
             }
             case "2" -> {
                 System.out.println("Your choice: 2\n");
-                EvenGame.evenChoice();
+                EvenGame.startEven();
             }
             case "3" -> {
                 System.out.println("Your choice: 3\n");
-                CalcGame.calcChoice();
+                CalcGame.startCalc();
             }
             case "4" -> {
                 System.out.println("Your choice: 4\n");
-                GCDGame.gcdChoice();
+                GCDGame.startGCD();
             }
             case "5" -> {
                 System.out.println("Your choice: 5\n");
-                ProgressionGame.progressionChoice();
+                ProgressionGame.startProgression();
             }
             case "6" -> {
                 System.out.println("Your choice: 6\n");
-                PrimeGame.primeChoice();
+                PrimeGame.startPrime();
             }
             case "0" -> System.out.println("Exit");
             default -> System.out.println("Something wrong");

@@ -1,24 +1,25 @@
 package hexlet.code.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class ProgressionGame {
     private static final int BOUND_FOR_PROGRESSION_GAME = 10;
     private static final String[] MATRIX = new String[BOUND_FOR_PROGRESSION_GAME];
 
-    public static void progressionChoice() {
-        Cli.greetingsClient();
+    public static void startProgression() {
         System.out.println("What number is missing in the progression?");
+        Map<String, String> storeResponses = new HashMap<>();
         for (int i = 0; i < Engine.COUNTER_OF_ROUNDS; i++) {
             generateQuestion();
             String correctAnswer = hireCorrectNumber();
             String gameQuestion = "Question: " + printNumbers();
-            Engine.getMapToStoreResponses().put(gameQuestion, correctAnswer);
+            storeResponses.put(gameQuestion, correctAnswer);
         }
-        Engine.checkCorrectAnswer(Engine.getMapToStoreResponses());
+        Engine.run(storeResponses);
     }
 
     private static String printNumbers() {

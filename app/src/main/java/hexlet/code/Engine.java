@@ -1,27 +1,16 @@
 package hexlet.code;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Engine {
-    private static final Map<String, String> MAP_TO_STORE_RESPONSES = new HashMap<>();
-
-    public static Map<String, String> getMapToStoreResponses() {
-        return MAP_TO_STORE_RESPONSES;
-    }
-
-    private static int answersCounter;
-
-    public static int getAnswersCounter() {
-        return answersCounter;
-    }
-
     public static final int ADDITIONAL_ONE = 1;
     public static final int COUNTER_OF_ROUNDS = 3;
 
-    public static void checkCorrectAnswer(Map<String, String> map) {
+    public static void run(Map<String, String> map) {
+        Cli.greetingsClient();
         Scanner scanner = new Scanner(System.in);
+        int answersCounter = 0;
         for (Map.Entry<String, String> entry : map.entrySet()) {
             System.out.println(entry.getKey());
             System.out.print("Your answer: ");
@@ -29,16 +18,15 @@ public class Engine {
             if (clientAnswer.equals(entry.getValue())) {
                 System.out.println("Correct!");
                 answersCounter++;
-                printCongratulations();
+                printCongratulations(answersCounter);
             } else {
                 printWrongAnswer(clientAnswer, entry.getValue());
                 break;
             }
-
         }
     }
 
-    private static void printCongratulations() {
+    private static void printCongratulations(int answersCounter) {
         if (answersCounter == COUNTER_OF_ROUNDS) {
             System.out.printf("Congratulations, %s!\n", Cli.getClientName());
         }
