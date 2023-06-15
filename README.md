@@ -4,7 +4,7 @@
 
 # Examples of games
 
-[![Even](https://i.postimg.cc/cCTv7fyc/Even-game.jpg)](https://asciinema.org/a/b8utx6tD8X0Y9Wy7kHpYZzqqH)
+[![Even](https://i.postimg.cc/BtWKWf4b/Even-game.jpg)](https://asciinema.org/a/b8utx6tD8X0Y9Wy7kHpYZzqqH)
 
 [![Calc](https://i.postimg.cc/qM0Yzyv5/Calc-game.jpg)](https://asciinema.org/a/jSERA0viBfU1D7xNFanM439pX)
 
