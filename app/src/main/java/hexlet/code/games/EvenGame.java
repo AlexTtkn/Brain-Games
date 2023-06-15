@@ -10,7 +10,6 @@ public class EvenGame {
     private static final int BOUND_FOR_EVEN_GAME = 1000;
 
     public static void start() {
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         Map<String, String> storeResponses = new HashMap<>();
         for (int i = 0; i < Engine.COUNTER_OF_ROUNDS; i++) {
             int randomNumber = new Random().nextInt(BOUND_FOR_EVEN_GAME) + Engine.ADDITIONAL_ONE;

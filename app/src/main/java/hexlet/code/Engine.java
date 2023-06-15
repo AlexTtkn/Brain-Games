@@ -9,6 +9,7 @@ public class Engine {
 
     public static void run(Map<String, String> map) {
         Cli.greetingsClient();
+        gameQuestion(App.getClientChose());
         Scanner scanner = new Scanner(System.in);
         int answersCounter = 0;
         for (Map.Entry<String, String> entry : map.entrySet()) {
@@ -36,5 +37,15 @@ public class Engine {
         System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'. \n",
                 clientAnswer, correctAnswer);
         System.out.printf("Let's try again, %s!\n", Cli.getClientName());
+    }
+    private static void gameQuestion(String clientChose) {
+        switch (clientChose) {
+            case "2" -> System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+            case "3" -> System.out.println("What is the result of the expression?");
+            case "4" -> System.out.println("Find the greatest common divisor of given numbers.");
+            case "5" -> System.out.println("What number is missing in the progression?");
+            case "6" -> System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+            default -> System.out.println("Something wrong");
+        }
     }
 }

@@ -8,9 +8,7 @@ import java.util.Random;
 
 public class GCDGame {
     private static final int BOUNDS_FOR_GCD_GAME = 100;
-
     public static void start() {
-        System.out.println("Find the greatest common divisor of given numbers.");
         Map<String, String> storeResponses = new HashMap<>();
         for (int i = 0; i < Engine.COUNTER_OF_ROUNDS; i++) {
             int randomNumber1 = new Random().nextInt(BOUNDS_FOR_GCD_GAME) + Engine.ADDITIONAL_ONE;

@@ -10,7 +10,6 @@ public class CalcGame {
     private static final int BOUND_FOR_CALC_GAME = 20;
 
     public static void start() {
-        System.out.println("What is the result of the expression?");
         Map<String, String> storeResponses = new HashMap<>();
         for (int i = 0; i < Engine.COUNTER_OF_ROUNDS; i++) {
             int randomNumber1 = new Random().nextInt(BOUND_FOR_CALC_GAME) + Engine.ADDITIONAL_ONE;

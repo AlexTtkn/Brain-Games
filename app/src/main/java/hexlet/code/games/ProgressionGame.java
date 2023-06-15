@@ -10,7 +10,6 @@ public class ProgressionGame {
     private static final int BOUND_FOR_PROGRESSION_GAME = 10;
 
     public static void start() {
-        System.out.println("What number is missing in the progression?");
         Map<String, String> storeResponses = new HashMap<>();
         for (int i = 0; i < Engine.COUNTER_OF_ROUNDS; i++) {
             String[] array = generateQuestion();
