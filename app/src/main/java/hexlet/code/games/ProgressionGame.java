@@ -34,7 +34,7 @@ public class ProgressionGame {
     }
 
     private static String hireCorrectNumber(String[] numbers) {
-        int pointsPosition = Utils.getRandomInt(BOUND_FOR_PROGRESSION_GAME) - Engine.ADDITIONAL_ONE;
+        int pointsPosition = Utils.getRandomInt(Engine.ONE, BOUND_FOR_PROGRESSION_GAME) - Engine.ONE;
         String points = "..";
         String correctAnswer = numbers[pointsPosition];
         numbers[pointsPosition] = points;
@@ -42,8 +42,8 @@ public class ProgressionGame {
     }
 
     private static String[] generateQuestion() {
-        int randomNumber1 = Utils.getRandomInt(Engine.ADDITIONAL_ONE, BOUND_FOR_PROGRESSION_GAME);
-        int randomNumber2 = Utils.getRandomInt(Engine.ADDITIONAL_ONE, BOUND_FOR_PROGRESSION_GAME);
+        int randomNumber1 = Utils.getRandomInt(Engine.ONE, BOUND_FOR_PROGRESSION_GAME);
+        int randomNumber2 = Utils.getRandomInt(Engine.ONE, BOUND_FOR_PROGRESSION_GAME);
         String[] array = new String[BOUND_FOR_PROGRESSION_GAME];
         for (int j = 0; j < array.length; j++) {
             array[j] = String.valueOf(randomNumber1);

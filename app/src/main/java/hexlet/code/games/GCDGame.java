@@ -13,8 +13,8 @@ public class GCDGame {
     public static void start() {
         Map<String, String> questionsAndAnswers = new HashMap<>();
         for (int i = 0; i < Engine.COUNTER_OF_ROUNDS; i++) {
-            int randomNumber1 = Utils.getRandomInt(Engine.ADDITIONAL_ONE, BOUNDS_FOR_GCD_GAME);
-            int randomNumber2 = Utils.getRandomInt(Engine.ADDITIONAL_ONE, BOUNDS_FOR_GCD_GAME);
+            int randomNumber1 = Utils.getRandomInt(Engine.ONE, BOUNDS_FOR_GCD_GAME);
+            int randomNumber2 = Utils.getRandomInt(Engine.ONE, BOUNDS_FOR_GCD_GAME);
             String correctAnswer = String.valueOf(getCorrectAnswer(randomNumber1, randomNumber2));
             String gameQuestion = "Question: " + randomNumber1 + " " + randomNumber2;
             questionsAndAnswers.put(gameQuestion, correctAnswer);

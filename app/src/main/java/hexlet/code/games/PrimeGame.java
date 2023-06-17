@@ -13,9 +13,9 @@ public class PrimeGame {
     public static void start() {
         Map<String, String> questionsAndAnswers = new HashMap<>();
         for (int i = 0; i < Engine.COUNTER_OF_ROUNDS; i++) {
-            int randomNumber = Utils.getRandomInt(Engine.ADDITIONAL_ONE, BOUND_FOR_PRIME_GAME);
-            String correctAnswer = getCorrectAnswer(randomNumber) ? "yes" : "no";
-            String gameQuestion = "Question: " + randomNumber;
+            int primeGameRandomNumber = Utils.getRandomInt(Engine.ONE, BOUND_FOR_PRIME_GAME);
+            String correctAnswer = getCorrectAnswer(primeGameRandomNumber) ? "yes" : "no";
+            String gameQuestion = "Question: " + primeGameRandomNumber;
             questionsAndAnswers.put(gameQuestion, correctAnswer);
         }
         Engine.run(questionsAndAnswers, PRIME_GAME_QUESTION);

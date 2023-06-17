@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Engine {
-    public static final int ADDITIONAL_ONE = 1;
+    public static final int ONE = 1;
     public static final int COUNTER_OF_ROUNDS = 3;
 
     public static void run(Map<String, String> map, String gameQuestion) {

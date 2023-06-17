@@ -13,8 +13,8 @@ public class CalcGame {
     public static void start() {
         Map<String, String> questionsAndAnswers = new HashMap<>();
         for (int i = 0; i < Engine.COUNTER_OF_ROUNDS; i++) {
-            int randomNumber1 = Utils.getRandomInt(Engine.ADDITIONAL_ONE, BOUND_FOR_CALC_GAME);
-            int randomNumber2 = Utils.getRandomInt(Engine.ADDITIONAL_ONE, BOUND_FOR_CALC_GAME);
+            int randomNumber1 = Utils.getRandomInt(Engine.ONE, BOUND_FOR_CALC_GAME);
+            int randomNumber2 = Utils.getRandomInt(Engine.ONE, BOUND_FOR_CALC_GAME);
             char[] operators = {'+', '-', '*'};
             int index = Utils.getRandomInt(operators.length);
             char operator = operators[index];

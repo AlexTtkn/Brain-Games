@@ -13,9 +13,9 @@ public class EvenGame {
     public static void start() {
         Map<String, String> questionsAndAnswers = new HashMap<>();
         for (int i = 0; i < Engine.COUNTER_OF_ROUNDS; i++) {
-            int randomNumber = Utils.getRandomInt(Engine.ADDITIONAL_ONE, BOUND_FOR_EVEN_GAME);
-            String correctAnswer = getCorrectAnswer(randomNumber) ? "yes" : "no";
-            String gameQuestion = "Question: " + randomNumber;
+            int evenGameRandomNumber = Utils.getRandomInt(Engine.ONE, BOUND_FOR_EVEN_GAME);
+            String correctAnswer = getCorrectAnswer(evenGameRandomNumber) ? "yes" : "no";
+            String gameQuestion = "Question: " + evenGameRandomNumber;
             questionsAndAnswers.put(gameQuestion, correctAnswer);
         }
         Engine.run(questionsAndAnswers, EVEN_GAME_QUESTION);
