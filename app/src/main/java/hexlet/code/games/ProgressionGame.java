@@ -1,23 +1,24 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public class ProgressionGame {
     private static final int BOUND_FOR_PROGRESSION_GAME = 10;
+    private static final String PROGRESSION_GAME_QUESTION = "What number is missing in the progression?";
 
     public static void start() {
-        Map<String, String> storeResponses = new HashMap<>();
+        Map<String, String> questionsAndAnswers = new HashMap<>();
         for (int i = 0; i < Engine.COUNTER_OF_ROUNDS; i++) {
             String[] array = generateQuestion();
             String correctAnswer = hireCorrectNumber(array);
             String gameQuestion = "Question: " + printNumbers(array);
-            storeResponses.put(gameQuestion, correctAnswer);
+            questionsAndAnswers.put(gameQuestion, correctAnswer);
         }
-        Engine.run(storeResponses);
+        Engine.run(questionsAndAnswers, PROGRESSION_GAME_QUESTION);
     }
 
     private static String printNumbers(String[] numbers) {
@@ -33,7 +34,7 @@ public class ProgressionGame {
     }
 
     private static String hireCorrectNumber(String[] numbers) {
-        int pointsPosition = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME);
+        int pointsPosition = Utils.getRandomInt(BOUND_FOR_PROGRESSION_GAME) - Engine.ADDITIONAL_ONE;
         String points = "..";
         String correctAnswer = numbers[pointsPosition];
         numbers[pointsPosition] = points;
@@ -41,8 +42,8 @@ public class ProgressionGame {
     }
 
     private static String[] generateQuestion() {
-        int randomNumber1 = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME);
-        int randomNumber2 = new Random().nextInt(BOUND_FOR_PROGRESSION_GAME);
+        int randomNumber1 = Utils.getRandomInt(Engine.ADDITIONAL_ONE, BOUND_FOR_PROGRESSION_GAME);
+        int randomNumber2 = Utils.getRandomInt(Engine.ADDITIONAL_ONE, BOUND_FOR_PROGRESSION_GAME);
         String[] array = new String[BOUND_FOR_PROGRESSION_GAME];
         for (int j = 0; j < array.length; j++) {
             array[j] = String.valueOf(randomNumber1);

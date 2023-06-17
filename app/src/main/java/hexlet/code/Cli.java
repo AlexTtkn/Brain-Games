@@ -1,11 +1,9 @@
 package hexlet.code;
+
 import java.util.Scanner;
+
 public class Cli {
     private static String clientName;
-
-    public static String getClientName() {
-        return clientName;
-    }
 
     public static void greetingsClient() {
         Scanner scanner = new Scanner(System.in);
@@ -13,6 +11,10 @@ public class Cli {
         System.out.print("May I have your name? ");
         clientName = scanner.nextLine();
         System.out.printf("Hello, %s! \n", clientName);
+    }
+
+    public static String getClientName() {
+        return clientName;
     }
 }
 
