@@ -7,8 +7,4 @@ public class Utils {
         Random random = new Random();
         return random.nextInt(max - min + Engine.ONE) + min;
     }
-    public static int getRandomInt(int max) {
-        Random random = new Random();
-        return random.nextInt(max);
-    }
 }

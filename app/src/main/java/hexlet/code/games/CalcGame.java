@@ -16,7 +16,7 @@ public class CalcGame {
             int randomNumber1 = Utils.getRandomInt(Engine.ONE, BOUND_FOR_CALC_GAME);
             int randomNumber2 = Utils.getRandomInt(Engine.ONE, BOUND_FOR_CALC_GAME);
             char[] operators = {'+', '-', '*'};
-            int index = Utils.getRandomInt(operators.length);
+            int index = Utils.getRandomInt(Engine.ONE, operators.length) - Engine.ONE;
             char operator = operators[index];
             String correctAnswer = String.valueOf(getCorrectAnswer(randomNumber1, randomNumber2, operator));
             String gameQuestion = "Question: " + generateQuestion(randomNumber1, randomNumber2, index);
