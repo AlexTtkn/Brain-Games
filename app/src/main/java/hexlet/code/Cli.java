@@ -11,7 +11,4 @@ public class Cli {
         String clientName = scanner.nextLine();
         System.out.printf("Hello, %s! \n", clientName);
     }
-
-
 }
-
