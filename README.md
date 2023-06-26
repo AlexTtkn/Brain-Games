@@ -9,6 +9,10 @@ The game generates random numbers, sets of numbers or progressions.
 After that, it offers the player to perform various simple arithmetic operations with them. 
 In case of three correct decisions, the player is declared the winner.
 
+To start the game, open the terminal, go to the folder with the game and run the following command:
+
+`$ make run-dist`
+
 # Examples of games
 
 [![Even](https://i.postimg.cc/BtWKWf4b/Even-game.jpg)](https://asciinema.org/a/b8utx6tD8X0Y9Wy7kHpYZzqqH)
