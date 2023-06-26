@@ -8,7 +8,7 @@ public class CalcGame {
     private static final int BOUND_FOR_CALC_GAME = 20;
     private static final String CALC_GAME_QUESTION = "What is the result of the expression?";
 
-    public static void start() {
+    public static void startCalcGame() {
         String[][] calcGameInfo = new String[Engine.COUNTER_OF_ROUNDS][2];
         for (int i = 0; i < calcGameInfo.length; i++) {
             int randomNumber1 = Utils.getRandomInt(Engine.ONE, BOUND_FOR_CALC_GAME);

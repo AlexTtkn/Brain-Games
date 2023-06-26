@@ -8,7 +8,7 @@ public class ProgressionGame {
     private static final int BOUND_FOR_PROGRESSION_GAME = 10;
     private static final String PROGRESSION_GAME_QUESTION = "What number is missing in the progression?";
 
-    public static void start() {
+    public static void startProgressionGame() {
         String[][] progressionGameInfo = new String[Engine.COUNTER_OF_ROUNDS][2];
         for (int i = 0; i < progressionGameInfo.length; i++) {
             int randomNumber1 = Utils.getRandomInt(Engine.ONE, BOUND_FOR_PROGRESSION_GAME);
@@ -37,11 +37,11 @@ public class ProgressionGame {
         return question.toString().trim();
     }
 
-    private static String[] generateQuestion(int randomNumber1, int randomNumber2) {
+    private static String[] generateQuestion(int startNumber, int step) {
         String[] array = new String[BOUND_FOR_PROGRESSION_GAME];
         for (int j = 0; j < array.length; j++) {
-            array[j] = String.valueOf(randomNumber1);
-            randomNumber1 += randomNumber2;
+            array[j] = String.valueOf(startNumber);
+            startNumber += step;
         }
         return array;
     }

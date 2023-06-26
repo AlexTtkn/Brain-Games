@@ -22,11 +22,11 @@ public class App {
         System.out.print("Your choise: ");
         switch (scanner.nextLine()) {
             case "1" -> Cli.greetingsClient();
-            case "2" -> EvenGame.start();
-            case "3" -> CalcGame.start();
-            case "4" -> GCDGame.start();
-            case "5" -> ProgressionGame.start();
-            case "6" -> PrimeGame.start();
+            case "2" -> EvenGame.startEvenGame();
+            case "3" -> CalcGame.startCalcGame();
+            case "4" -> GCDGame.startGCDGame();
+            case "5" -> ProgressionGame.startProgressionGame();
+            case "6" -> PrimeGame.startPrimeGame();
             case "0" -> System.out.println("Exit");
             default -> System.out.println("Something wrong");
         }
