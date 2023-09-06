@@ -13,7 +13,7 @@ To start the game, open the terminal, go to the folder with the game and run the
 
 `$ make run-dist`
 
-# Examples of games
+# Examples of games:
 
 [![Even](https://i.postimg.cc/BtWKWf4b/Even-game.jpg)](https://asciinema.org/a/b8utx6tD8X0Y9Wy7kHpYZzqqH)
 
